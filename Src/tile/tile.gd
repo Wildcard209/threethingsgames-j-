@@ -10,8 +10,8 @@ var y :int
 
 var buildingHP:int = 0
 var buildingHPMax :int = 10
-var productionTimeMax : int = 3
-var prodTime:int  = productionTimeMax
+var productionTimeMax = 3
+var prodTime = productionTimeMax
 
 func _ready():
 	var anim = $AnimatedSprite2D
@@ -23,12 +23,13 @@ func _ready():
 func _process(delta):
 	if buildState ==  eBuildState.windmill:
 		prodTime = prodTime - delta
-		if prodTime <0:
+		if prodTime <=0:
 			produce()
 			prodTime = productionTimeMax
 
 func produce():
 	Owner.wind+=1
+	print("prod")
 
 func _on_area_2d_area_entered(area):
 	if area.owner.get_class() == "tsunami":
@@ -81,6 +82,9 @@ func changeAnimState():
 			$Sprite2D2.visible=false
 		eBuildState.none:
 			$Sprite2D.visible = true
+		eBuildState.windmill:
+			$Sprite2D.visible = true
+			$Sprite2D2.visible = true
 
 
 
