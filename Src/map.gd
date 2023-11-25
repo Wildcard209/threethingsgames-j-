@@ -2,8 +2,8 @@ class_name map extends Node
 
 var GRID_HORIZ_SIZE : int = 30
 var GRID_VERT_SIZE : int = 30
-var TILE_HORIZ_SIZE : int = 30
-var TILE_VERT_SIZE : int = 30
+var TILE_HORIZ_SIZE : int = 16
+var TILE_VERT_SIZE : int = 16
 var layers = []
 # Called when the node enters the scene tree for the first time.
 func _ready():

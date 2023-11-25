@@ -12,14 +12,14 @@ size = Vector2(129, 126)
 script = ExtResource("1_6tkqd")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(65, 63)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_hrclv")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = SubResource("GDScript_gaocj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(63.5, 64)
+scale = Vector2(0.15, 0.15)
 shape = SubResource("RectangleShape2D_iwkfn")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

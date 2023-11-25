@@ -7,5 +7,6 @@
 script = ExtResource("1_hwj31")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(65, 65)
+rotation = 0.760964
+skew = -0.792379
 texture = ExtResource("2_u14j8")
