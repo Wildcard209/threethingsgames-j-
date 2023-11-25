@@ -112,7 +112,7 @@ func changeAnimState():
 			$Sprite2D.visible = true
 			$Sprite2D2.visible = true
 	
-	if isGround():
+	if isGround() && true:
 		$Sprite2D.texture = load("res://Assets/Ground/"+getSurroundingTilesString()+".png")
 	
 
@@ -125,21 +125,33 @@ func getSurroundingTilesString():
 	var w = clamp(x-1,0,Owner.GRID_HORIZ_SIZE-1)
 	var n = clamp(y+1,0,Owner.GRID_VERT_SIZE-1)
 	var s = clamp(y-1,0,Owner.GRID_VERT_SIZE-1)
-	if grid[w][n].isWater():
+	
+	var north =false
+	var south = false
+	var west = false
+	var east =false
+	
+	north = grid[x][n].isWater()
+	west = grid[w][x].isWater()
+	east = grid[e][n].isWater()
+	south = grid[x][s].isWater()
+		
+		
+	if grid[w][n].isWater() || north || west:
 		out=out + "_NW"
-	if grid[x][n].isWater():
+	if north:
 		out=out + "_N"
-	if grid[e][n].isWater():
+	if grid[e][n].isWater() || north || east:
 		out=out + "_NE"
-	if grid[w][x].isWater():
+	if west:
 		out=out + "_W"
-	if grid[e][n].isWater():
+	if east:
 		out=out + "_E"
-	if grid[w][s].isWater():
+	if grid[w][s].isWater() || south || west:
 		out=out + "_SW"
-	if grid[x][s].isWater():
+	if south:
 		out=out + "_S"
-	if grid[e][s].isWater():
+	if grid[e][s].isWater() || east || south:
 		out=out + "_SE"
 	if out == "Grass_Edge":
 		out = "Grass_Inside_1"
