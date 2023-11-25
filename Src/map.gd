@@ -9,11 +9,16 @@ var min_health = 5
 var max_health = 20
 var grid = []
 
-var TIMER_MAX :int = 0.1
+var UI
+
+var wind : int = 0
+
+var TIMER_MAX :int = 1
 var timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	UI = $map/UI as HUD
 	timer = TIMER_MAX
 	for i in GRID_HORIZ_SIZE:
 		grid.append([])
@@ -21,15 +26,18 @@ func _ready():
 			var t = preload("res://Src/tile/tile.tscn").instantiate()
 			t.transform = Transform2D(0.0,Vector2(i*TILE_HORIZ_SIZE,j*TILE_VERT_SIZE))
 			t.max_hp = rng.randi_range(min_health,max_health)
+			t.Owner = self
+			t.x = i
+			t.y = j
 			add_child(t)
 			grid[i].append(t)
 	var y = grid[5][5] as tile
-	y.buildState = y.eBuildState.dead
+	y.buildState = tile.eBuildState.dead
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	timer = timer - delta
-	print(timer)
+	UI.string = str(wind)
 	if timer <= 0:
 		timer = TIMER_MAX
 		for i in GRID_HORIZ_SIZE:

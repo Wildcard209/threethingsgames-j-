@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddmu8r2tftem8"]
+[gd_scene load_steps=11 format=3 uid="uid://bjf48mm5ay8s4"]
 
 [ext_resource type="Script" path="res://Src/tile/tile.gd" id="1_6tkqd"]
 [ext_resource type="Texture2D" uid="uid://xvr6t6gvi88o" path="res://Assets/Water_1.png" id="2_ydxvm"]
@@ -39,7 +39,7 @@ script = ExtResource("1_6tkqd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_aoos4")
-frame_progress = 0.360091
+frame_progress = 0.265275
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(3.04646e-07, 3.04646e-07)
