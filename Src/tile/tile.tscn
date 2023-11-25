@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://10slu3mf2k80" path="res://Assets/Water_3.png" id="4_vx18o"]
 [ext_resource type="Texture2D" uid="uid://dl3cr1gxwhmfp" path="res://Assets/Water_4.png" id="5_r0px1"]
 [ext_resource type="Texture2D" uid="uid://bov8mv536r7eg" path="res://Assets/Ground/Grass_Inside_7.png" id="6_lwq8l"]
-[ext_resource type="Texture2D" uid="uid://clh2s3gedhe42" path="res://Assets/Grass_Inside_2.png" id="7_sa74o"]
+[ext_resource type="SpriteFrames" uid="uid://dv36wjaixo2jv" path="res://Assets/pinwheel.tres" id="7_hj4jf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aoos4"]
 animations = [{
@@ -55,10 +55,10 @@ shape = SubResource("RectangleShape2D_iwkfn")
 scale = Vector2(4, 4)
 texture = ExtResource("6_lwq8l")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(4, 4)
-texture = ExtResource("7_sa74o")
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("7_hj4jf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

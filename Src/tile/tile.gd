@@ -4,13 +4,15 @@ var max_hp :int = 100
 var hp : int = 100
 var buildState : eBuildState = eBuildState.dead
 var hovered = false
-var Owner : map
+var Owner
 var x :int
 var y :int
 
+var Rect
+
 var buildingHP:int = 5
 var buildingHPMax :int = 5
-var productionTimeMax = 3
+var productionTimeMax = 0.3
 var prodTime = productionTimeMax
 
 var windmillCost = 5
@@ -18,6 +20,8 @@ var groundCost = 1
 
 func _ready():
 	var anim = $AnimatedSprite2D
+	Rect = $ColorRect
+	$Sprite2D2.play()
 	hp = max_hp
 	buildingHP = buildingHPMax
 	anim.play()
@@ -62,7 +66,7 @@ func _on_area_2d_mouse_exited():
 
 func _input(event):
 	if hovered:
-		if Input.is_action_just_pressed("test") && connectedToLand() && canBuild(groundCost,true) && !isGround():
+		if Input.is_action_just_pressed("test"): #&& connectedToLand() && canBuild(groundCost,true) && !isGround():
 			hp = 500
 			buildState = eBuildState.none
 			Owner.wind -= groundCost
@@ -117,42 +121,43 @@ func changeAnimState():
 	
 
 func getSurroundingTilesString():
-	var grid = Owner.grid
+	var grid = [] + Owner.grid
 	var out = ""
-	if max_hp/hp <2:
-		out +="Grass_Edge"
+	out +="Grass_Edge"
 	var e = clamp(x+1,0,Owner.GRID_HORIZ_SIZE-1)
 	var w = clamp(x-1,0,Owner.GRID_HORIZ_SIZE-1)
-	var n = clamp(y+1,0,Owner.GRID_VERT_SIZE-1)
-	var s = clamp(y-1,0,Owner.GRID_VERT_SIZE-1)
-	
-	var north =false
-	var south = false
-	var west = false
-	var east =false
-	
-	north = grid[x][n].isWater()
-	west = grid[w][x].isWater()
-	east = grid[e][n].isWater()
-	south = grid[x][s].isWater()
+	var s = clamp(y+1,0,Owner.GRID_VERT_SIZE-1)
+	var n = clamp(y-1,0,Owner.GRID_VERT_SIZE-1)
 		
+	var north = grid[x][n].isWater()
+	#grid[x][n].Rect.visible = true
+	var west = grid[w][y].isWater()
+	#grid[w][y].Rect.visible = true
+	var east = grid[e][y].isWater()
+	#grid[e][y].Rect.visible = true
+	var south = grid[x][s].isWater()
+	#grid[x][s].Rect.visible = true
 		
 	if grid[w][n].isWater() || north || west:
 		out=out + "_NW"
+		#grid[w][n].Rect.visible = true
 	if north:
 		out=out + "_N"
 	if grid[e][n].isWater() || north || east:
 		out=out + "_NE"
+		#grid[e][n].Rect.visible = true
 	if west:
 		out=out + "_W"
 	if east:
 		out=out + "_E"
 	if grid[w][s].isWater() || south || west:
 		out=out + "_SW"
+		#grid[w][s].Rect.visible = true
 	if south:
 		out=out + "_S"
 	if grid[e][s].isWater() || east || south:
 		out=out + "_SE"
+		#grid[e][s].Rect.visible = true
 	if out == "Grass_Edge":
 		out = "Grass_Inside_1"
 		
