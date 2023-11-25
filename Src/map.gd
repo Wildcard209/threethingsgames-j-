@@ -18,12 +18,14 @@ func _ready():
 			t.hp = rng.randi_range(min_health,max_health)
 			add_child(t)
 			grid[i].append(t)
+	var y = grid[5][5] as tile
+	y.buildState = y.eBuildState.dead
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	for i in GRID_HORIZ_SIZE:
 		for j in GRID_VERT_SIZE:
-			var x =grid[i][j]
+			var x =grid[i][j] as tile
 			var a = clamp(i+1,0,GRID_HORIZ_SIZE-1)
 			var b = clamp(i-1,0,GRID_HORIZ_SIZE-1)
 			var c = clamp(j+1,0,GRID_VERT_SIZE-1)

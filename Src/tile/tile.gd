@@ -35,8 +35,15 @@ func isWater():
 	else:
 		return false
 
-func erode():
-	pass
+func erode(delta):
+	hp = hp-1
+	checkDead()
+
+func checkDead():
+	if hp <=0:
+		buildState = eBuildState.dead
+		$ColorRect.visible=true
+
 
 enum eBuildState{
 	none,
