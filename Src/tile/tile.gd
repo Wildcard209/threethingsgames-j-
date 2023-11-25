@@ -8,8 +8,8 @@ var Owner : map
 var x :int
 var y :int
 
-var buildingHP:int = 0
-var buildingHPMax :int = 10
+var buildingHP:int = 5
+var buildingHPMax :int = 5
 var productionTimeMax = 3
 var prodTime = productionTimeMax
 
@@ -36,9 +36,20 @@ func produce():
 	Owner.wind+=1
 
 func _on_area_2d_area_entered(area):
-	if area.owner.get_class() == "tsunami":
-		pass
-		
+	if  area.owner.get_class() == "CharacterBody2D":
+		if area.owner as tsunami:
+			if buildState == eBuildState.windmill:
+				damageBuilding(area.owner.damage)
+				area.owner.queue_free()
+		else:
+			print("no")
+func damageBuilding(damage):
+	buildingHP -= damage
+	if buildingHP <=0:
+		print("dead")
+		buildState = eBuildState.none
+		changeAnimState()
+
 func _on_area_2d_mouse_entered():
 	var rect = $ColorRect
 	hovered = true
@@ -96,33 +107,42 @@ func changeAnimState():
 			$Sprite2D2.visible=false
 		eBuildState.none:
 			$Sprite2D.visible = true
+			$Sprite2D2.visible=false
 		eBuildState.windmill:
 			$Sprite2D.visible = true
 			$Sprite2D2.visible = true
-
-
+	
+	if isGround() && false:
+		$Sprite2D.texture = load("res://Assets/Ground/"+getSurroundingTilesString())
+	
 
 func getSurroundingTilesString():
 	var grid = Owner.grid
-	var a = clamp(x+1,0,Owner.GRID_HORIZ_SIZE-1)
-	var b = clamp(x-1,0,Owner.GRID_HORIZ_SIZE-1)
-	var c = clamp(y+1,0,Owner.GRID_VERT_SIZE-1)
-	var d = clamp(y-1,0,Owner.GRID_VERT_SIZE-1)
-	if grid[a][y].isWater():
-		pass
+	var out = ""
+	if max_hp/hp <2:
+		out +="Grass_Edge"
+	var e = clamp(x+1,0,Owner.GRID_HORIZ_SIZE-1)
+	var w = clamp(x-1,0,Owner.GRID_HORIZ_SIZE-1)
+	var n = clamp(y+1,0,Owner.GRID_VERT_SIZE-1)
+	var s = clamp(y-1,0,Owner.GRID_VERT_SIZE-1)
+	if grid[w][n].isWater():
+		out=out + "_NW"
+	if grid[x][n].isWater():
+		out=out + "_N"
+	if grid[e][n].isWater():
+		out=out + "_NE"
+	if grid[e][x].isWater():
+		out=out + "_E"
+	if grid[w][n].isWater():
+		out=out + "_W"
+	if grid[w][s].isWater():
+		out=out + "_SW"
+	if grid[x][s].isWater():
+		out=out + "_S"
+	if grid[e][s].isWater():
+		out=out + "_SE"
 		
-
-enum eDirections{
-	NorthWest,
-	North,
-	NorthEast,
-	West,
-	East,
-	SouthWest,
-	South,
-	SouthEast
-}
-
+		
 enum eBuildState{
 	none,
 	dead,
