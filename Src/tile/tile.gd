@@ -9,7 +9,7 @@ func _ready():
 	pass
 
 func _on_area_2d_area_entered(area):
-	if area.owner == tsunami:
+	if area.owner.get_class() == "tsunami":
 		pass
 
 enum eBuildState{
