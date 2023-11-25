@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://byhvyat3fpubo" path="res://Assets/Water_2.png" id="3_a5u6v"]
 [ext_resource type="Texture2D" uid="uid://10slu3mf2k80" path="res://Assets/Water_3.png" id="4_vx18o"]
 [ext_resource type="Texture2D" uid="uid://dl3cr1gxwhmfp" path="res://Assets/Water_4.png" id="5_r0px1"]
-[ext_resource type="Texture2D" uid="uid://bov8mv536r7eg" path="res://Assets/Grass_Inside_7.png" id="6_b0b5h"]
+[ext_resource type="Texture2D" uid="uid://bov8mv536r7eg" path="res://Assets/Ground/Grass_Inside_7.png" id="6_lwq8l"]
 [ext_resource type="Texture2D" uid="uid://clh2s3gedhe42" path="res://Assets/Grass_Inside_2.png" id="7_sa74o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aoos4"]
@@ -39,7 +39,7 @@ script = ExtResource("1_6tkqd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_aoos4")
-frame_progress = 0.475409
+frame_progress = 0.740449
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(3.04646e-07, 3.04646e-07)
@@ -53,7 +53,7 @@ shape = SubResource("RectangleShape2D_iwkfn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("6_b0b5h")
+texture = ExtResource("6_lwq8l")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false

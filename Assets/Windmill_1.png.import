@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bov8mv536r7eg"
-path="res://.godot/imported/Grass_Inside_7.png-d6e0593dd23b6a6536a5a9416d83e43c.ctex"
+uid="uid://ca4hvk5w2pyg2"
+path="res://.godot/imported/Windmill_1.png-9160fa76c9b60f9aacf77e20f6b42385.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Grass_Inside_7.png"
-dest_files=["res://.godot/imported/Grass_Inside_7.png-d6e0593dd23b6a6536a5a9416d83e43c.ctex"]
+source_file="res://Assets/Windmill_1.png"
+dest_files=["res://.godot/imported/Windmill_1.png-9160fa76c9b60f9aacf77e20f6b42385.ctex"]
 
 [params]
 

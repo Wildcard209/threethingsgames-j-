@@ -4,7 +4,6 @@ var damage = 5
 var lifetime = 30
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	velocity.x = 10
 	velocity.y = 10
 

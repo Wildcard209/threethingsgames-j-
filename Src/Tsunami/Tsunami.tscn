@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://clk13g4nk4nh2"]
 
 [ext_resource type="Script" path="res://Src/Tsunami/Tsunami.gd" id="1_hwj31"]
-[ext_resource type="Texture2D" uid="uid://x5gtfra662gx" path="res://icon.svg" id="2_u14j8"]
+[ext_resource type="Texture2D" uid="uid://xvr6t6gvi88o" path="res://Assets/Water_1.png" id="2_2e2oi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0tra"]
 size = Vector2(76, 113)
@@ -14,7 +14,7 @@ z_index = 1
 rotation = 0.760964
 scale = Vector2(1, 1)
 skew = -0.79238
-texture = ExtResource("2_u14j8")
+texture = ExtResource("2_2e2oi")
 
 [node name="Area2D" type="Area2D" parent="."]
 
