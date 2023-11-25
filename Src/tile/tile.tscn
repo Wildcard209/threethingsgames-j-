@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://Src/tile/tile.gd" id="1_6tkqd"]
 [ext_resource type="Texture2D" uid="uid://x5gtfra662gx" path="res://icon.svg" id="1_hrclv"]
-[ext_resource type="Script" path="res://Src/tile/collider.gd" id="3_c7wqj"]
+
+[sub_resource type="GDScript" id="GDScript_gaocj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwkfn"]
 size = Vector2(129, 126)
@@ -15,7 +16,7 @@ position = Vector2(65, 63)
 texture = ExtResource("1_hrclv")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_c7wqj")
+script = SubResource("GDScript_gaocj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(63.5, 64)
