@@ -57,7 +57,7 @@ texture = ExtResource("6_lwq8l")
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="."]
 visible = false
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("7_hj4jf")
 
 [node name="ColorRect" type="ColorRect" parent="."]

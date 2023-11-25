@@ -66,7 +66,7 @@ func _on_area_2d_mouse_exited():
 
 func _input(event):
 	if hovered:
-		if Input.is_action_just_pressed("test"): #&& connectedToLand() && canBuild(groundCost,true) && !isGround():
+		if Input.is_action_just_pressed("test") && connectedToLand() && canBuild(groundCost,true) && !isGround():
 			hp = 500
 			buildState = eBuildState.none
 			Owner.wind -= groundCost
