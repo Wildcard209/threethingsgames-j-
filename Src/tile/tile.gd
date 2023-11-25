@@ -112,8 +112,8 @@ func changeAnimState():
 			$Sprite2D.visible = true
 			$Sprite2D2.visible = true
 	
-	if isGround() && false:
-		$Sprite2D.texture = load("res://Assets/Ground/"+getSurroundingTilesString())
+	if isGround():
+		$Sprite2D.texture = load("res://Assets/Ground/"+getSurroundingTilesString()+".png")
 	
 
 func getSurroundingTilesString():
@@ -131,17 +131,20 @@ func getSurroundingTilesString():
 		out=out + "_N"
 	if grid[e][n].isWater():
 		out=out + "_NE"
-	if grid[e][x].isWater():
-		out=out + "_E"
-	if grid[w][n].isWater():
+	if grid[w][x].isWater():
 		out=out + "_W"
+	if grid[e][n].isWater():
+		out=out + "_E"
 	if grid[w][s].isWater():
 		out=out + "_SW"
 	if grid[x][s].isWater():
 		out=out + "_S"
 	if grid[e][s].isWater():
 		out=out + "_SE"
+	if out == "Grass_Edge":
+		out = "Grass_Inside_1"
 		
+	return out
 		
 enum eBuildState{
 	none,
