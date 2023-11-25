@@ -39,7 +39,7 @@ script = ExtResource("1_6tkqd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_aoos4")
-frame_progress = 0.974163
+frame_progress = 0.461706
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(3.04646e-07, 3.04646e-07)
@@ -56,6 +56,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("6_b0b5h")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(4, 4)
 texture = ExtResource("7_sa74o")
 

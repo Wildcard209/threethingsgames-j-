@@ -11,7 +11,7 @@ var grid = []
 
 var UI
 
-var wind : int = 0
+var wind : int = 5
 
 var TIMER_MAX :int = 1
 var timer
@@ -31,8 +31,11 @@ func _ready():
 			t.y = j
 			add_child(t)
 			grid[i].append(t)
-	var y = grid[5][5] as tile
-	y.buildState = tile.eBuildState.dead
+	for i in range(5,16):
+		for j in range(3,9):
+			grid[i][j].buildState = tile.eBuildState.none
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -43,9 +46,21 @@ func _process(delta):
 		for i in GRID_HORIZ_SIZE:
 			for j in GRID_VERT_SIZE:
 				var x =grid[i][j] as tile
-				var water = findSurroundingWater(i,j)
-				if  water>0:
-					x.erode(water,delta)
+				if x.buildState != tile.eBuildState.dead:
+					var water = findSurroundingWater(i,j)
+					if  water>0:
+						x.erode(water,delta)
+	var allWater = true
+	for i in GRID_HORIZ_SIZE:
+			for j in GRID_VERT_SIZE:
+				if grid[i][j].isGround():
+					allWater = false
+	if allWater:
+		endGame()
+		
+
+func endGame():
+	print("end")
 
 func findSurroundingWater(x,y):
 	var a = clamp(x+1,0,GRID_HORIZ_SIZE-1)
