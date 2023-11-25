@@ -1,13 +1,14 @@
 class_name tile extends Node2D
 
+var max_hp :int = 100
 var hp : int = 100
 var buildState : eBuildState = eBuildState.none
-var collider = null
 var hovered = false
 
 
 func _ready():
 	var anim = $AnimatedSprite2D
+	hp = max_hp
 	anim.play()
 
 func _on_area_2d_area_entered(area):
@@ -27,7 +28,9 @@ func _on_area_2d_mouse_exited():
 func _input(event):
 	if hovered:
 		if Input.is_action_just_pressed("test"):
-			pass
+			hp = 500
+			buildState = eBuildState.none
+			changeAnimState()
 
 func isWater():
 	if buildState == eBuildState.dead:
@@ -35,22 +38,24 @@ func isWater():
 	else:
 		return false
 
-func erode(delta):
-	hp = hp-1
+func erode(water,delta):
+	hp = hp-water
 	checkDead()
+	changeAnimState()
 
 func checkDead():
 	if hp <=0:
 		buildState = eBuildState.dead
-		$ColorRect.visible=true
 
+func changeAnimState():
+	if buildState == eBuildState.dead:
+		$Sprite2D.visible=false
+		$Sprite2D2.visible=false
+	if buildState == eBuildState.none:
+		$Sprite2D.visible = true
 
 enum eBuildState{
 	none,
 	dead,
 	windmill
 }
-
-
-
-
