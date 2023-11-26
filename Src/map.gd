@@ -1,7 +1,7 @@
 class_name map extends Node
 
-var GRID_HORIZ_SIZE : int = 31
-var GRID_VERT_SIZE : int = 17
+var GRID_HORIZ_SIZE : int = 32
+var GRID_VERT_SIZE : int = 18
 var TILE_HORIZ_SIZE : int = 64
 var TILE_VERT_SIZE : int = 64
 var rng = RandomNumberGenerator.new()

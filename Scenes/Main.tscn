@@ -10,3 +10,4 @@ script = ExtResource("1_kod1y")
 
 [node name="UI" parent="map" instance=ExtResource("2_2fnx0")]
 z_index = 99
+mouse_filter = 1
