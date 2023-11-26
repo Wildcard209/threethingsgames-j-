@@ -9,3 +9,4 @@ script = ExtResource("1_kod1y")
 [node name="map" type="Node" parent="."]
 
 [node name="UI" parent="map" instance=ExtResource("2_2fnx0")]
+z_index = 99

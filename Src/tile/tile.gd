@@ -15,6 +15,9 @@ var buildingHPMax :int = 5
 var productionTimeMax = 0.7
 var prodTime = productionTimeMax
 
+var bunTimeMax = 5
+var bunTime = productionTimeMax
+
 var windmillCost = 5
 var groundCost = 20
 
@@ -38,6 +41,12 @@ func _process(delta):
 		if prodTime <=0:
 			produce()
 			prodTime = productionTimeMax
+	if buildState == eBuildState.none && buns.size() >=2:
+		bunTime -= delta
+		if bunTime <0:
+			if is_instance_valid(buns[0]):
+				buns[0].breed(self)
+				bunTime = bunTimeMax
 
 func produce():
 	Owner.wind+=1
@@ -184,6 +193,7 @@ enum eBuildState{
 
 
 func _on_area_2d_area_exited(area):
-	for i in range(buns.size()):
-		if buns[i] == area.owner:
-			buns.remove_at(i)
+	if area.owner as bunbun:
+		var bun = buns.find(area.owner)
+		if bun != -1:
+			buns.remove_at(bun)

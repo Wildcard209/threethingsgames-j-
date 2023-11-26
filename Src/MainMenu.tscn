@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4mdppjbi3dbv"]
+
+[ext_resource type="Script" path="res://Src/MainMenu.gd" id="1_f6iu8"]
+[ext_resource type="Texture2D" uid="uid://xqv8ofat2ex" path="res://Assets/Ground/Grass_Inside_1.png" id="2_7wjut"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nt0eq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7wjut")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00lkb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r273f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i47bl"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f6iu8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nt0eq")
+centered = false
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 260.0
+offset_right = 856.0
+offset_bottom = 291.0
+scale = Vector2(6, 6)
+action_mode = 0
+text = "START"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1695.0
+offset_top = 34.0
+offset_right = 1742.0
+offset_bottom = 65.0
+scale = Vector2(4, 4)
+text = "QUIT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 625.0
+offset_right = 880.0
+offset_bottom = 641.0
+scale = Vector2(4, 4)
+theme_override_styles/slider = SubResource("StyleBoxEmpty_00lkb")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_r273f")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_i47bl")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

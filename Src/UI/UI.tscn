@@ -18,7 +18,30 @@ scale = Vector2(4.36, 2.04)
 texture = ExtResource("2_78uyj")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 38.0
 offset_top = 21.0
 offset_right = 165.0
 offset_bottom = 44.0
+
+[node name="Sign2" type="Sprite2D" parent="."]
+position = Vector2(101, 94)
+scale = Vector2(4.36, 2)
+texture = ExtResource("2_78uyj")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 84.0
+offset_right = 162.0
+offset_bottom = 107.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1855.0
+offset_top = 21.0
+offset_right = 1902.0
+offset_bottom = 52.0
+text = "QUIT"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

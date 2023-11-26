@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3bpds5onl7mt"
+path="res://.godot/imported/Panga Panda.wav-445cdda474b70f5ea658d70f79b20a69.sample"
+
+[deps]
+
+source_file="res://Src/Panga Panda.wav"
+dest_files=["res://.godot/imported/Panga Panda.wav-445cdda474b70f5ea658d70f79b20a69.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

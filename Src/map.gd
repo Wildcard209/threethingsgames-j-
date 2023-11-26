@@ -6,10 +6,11 @@ var TILE_HORIZ_SIZE : int = 64
 var TILE_VERT_SIZE : int = 64
 var rng = RandomNumberGenerator.new()
 var min_health = 5
-var max_health = 20
+var max_health = 60
 var grid = []
 
 var UI
+var buncount = 0
 
 var wind : int = 5
 
@@ -43,13 +44,17 @@ func _ready():
 	
 	var f = load("res://Src/bunbun/bunbun.tscn").instantiate()
 	f.position = grid[8][7].position
+	f.Owner = self
 	add_child(f)
 	f = load("res://Src/bunbun/bunbun.tscn").instantiate()
 	f.position = grid[10][5].position
+	f.Owner = self
 	add_child(f)
 	f = load("res://Src/bunbun/bunbun.tscn").instantiate()
 	f.position = grid[9][4].position
+	f.Owner = self
 	add_child(f)
+	buncount = 3
 func spawnTsunami():
 	var x = load("res://Src/Tsunami/Tsunami.tscn").instantiate()
 	x.transform = Transform2D(0.0,Vector2(3,24),0,Vector2(-100,-100))
@@ -60,16 +65,19 @@ func spawnTsunami():
 func _process(delta):
 	timer = timer - delta
 	tsunamiTimer = tsunamiTimer - delta
+	print(timer)
+	print(log(buncount)/3)
 	UI.string = str(wind)
+	UI.buns = str(buncount)
 	if timer <= 0:
-		timer = TIMER_MAX
+		timer = TIMER_MAX/(log(buncount)/3)
 		for i in GRID_HORIZ_SIZE:
 			for j in GRID_VERT_SIZE:
 				var x =grid[i][j] as tile
 				if x.buildState != tile.eBuildState.dead:
 					var water = findSurroundingWater(i,j)
 					if  water>0:
-						x.erode(1,delta)
+						x.erode(water,delta)
 	var allWater = true
 	for i in GRID_HORIZ_SIZE:
 			for j in GRID_VERT_SIZE:
@@ -77,6 +85,10 @@ func _process(delta):
 					allWater = false
 	if allWater:
 		endGame()
+	var buns = 0
+	for i in get_children():
+		if i as bunbun:
+			buns +=1
 	
 	if tsunamiTimer < 0:
 		tsunamiTimer = tsunamiMaxTimer
