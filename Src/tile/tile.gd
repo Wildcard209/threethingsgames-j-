@@ -19,7 +19,7 @@ var prodTime = productionTimeMax
 var bunTimeMax = 5
 var bunTime = productionTimeMax
 
-var windmillCost = 5
+var windmillCost = 50
 var groundCost = 20
 
 var buns = []

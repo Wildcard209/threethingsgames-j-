@@ -37,13 +37,9 @@ offset_right = 162.0
 offset_bottom = 107.0
 
 [node name="Label3" type="Label" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 520.0
 offset_top = 278.0
 offset_right = 763.0
 offset_bottom = 356.0
 scale = Vector2(4.05827, 5.22533)
-text = "THE BUNNES ARE DEAD
-YOU KILLED THE BUNNES
-THEY WILL COME FOR REVENGE"

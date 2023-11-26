@@ -12,7 +12,7 @@ var grid = []
 var UI
 var buncount = 0
 
-var wind : int = 5
+var wind : int = 50
 
 var TIMER_MAX :int = 3
 var timer
@@ -65,8 +65,6 @@ func spawnTsunami():
 func _process(delta):
 	timer = timer - delta
 	tsunamiTimer = tsunamiTimer - delta
-	print(timer)
-	print(log(buncount)/3)
 	UI.string = str(wind)
 	UI.buns = str(buncount)
 	if timer <= 0:
@@ -89,9 +87,9 @@ func _process(delta):
 	for i in get_children():
 		if i as bunbun:
 			buns +=1
-			if buns ==0:
-				UI.bundead
-	
+	if buns ==0:
+		print("boop")
+		UI.bundead()
 	if tsunamiTimer < 0:
 		tsunamiTimer = tsunamiMaxTimer
 		spawnTsunami()
@@ -99,6 +97,7 @@ func _process(delta):
 
 func endGame():
 	print("end")
+	UI.bundead()
 
 func findSurroundingWater(x,y):
 	var a = clamp(x+1,0,GRID_HORIZ_SIZE-1)

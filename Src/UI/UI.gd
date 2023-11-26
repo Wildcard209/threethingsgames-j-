@@ -4,10 +4,12 @@ var label
 var label2
 var string : String
 var buns : String
+var label3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	label = $Label
 	label2= $Label2
+	label3 = $Label3
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,4 +23,7 @@ func _input(event):
 		get_tree().change_scene_to_file("res://Src/MainMenu.tscn")
 	
 func bundead():
-	$Label3.visible = true
+	print("boop")
+	label3.text = "THE BUNNES ARE DEAD
+YOU KILLED THE BUNNES
+THEY WILL COME FOR REVENGE"
