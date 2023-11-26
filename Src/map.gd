@@ -16,10 +16,16 @@ var wind : int = 5
 var TIMER_MAX :int = 1
 var timer
 
+var MIN_TSUNAMI_TIMER = 25
+var MAX_TSUNAMI_TIMER = 150
+var tsunamiMaxTimer = rng.randi_range(MIN_TSUNAMI_TIMER,MAX_TSUNAMI_TIMER)
+var tsunamiTimer = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UI = $map/UI as HUD
 	timer = TIMER_MAX
+	tsunamiTimer=tsunamiMaxTimer
 	for i in GRID_HORIZ_SIZE:
 		grid.append([])
 		for j in GRID_VERT_SIZE:
@@ -36,10 +42,16 @@ func _ready():
 			grid[i][j].buildState = tile.eBuildState.none
 	
 	
+func spawnTsunami():
+	var x = load("res://Src/Tsunami/Tsunami.tscn").instantiate()
+	x.transform = Transform2D(0.0,Vector2(3,24),0,Vector2(-100,-100))
+	add_child(x)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	timer = timer - delta
+	tsunamiTimer = tsunamiTimer - delta
 	UI.string = str(wind)
 	if timer <= 0:
 		timer = TIMER_MAX
@@ -57,6 +69,10 @@ func _process(delta):
 					allWater = false
 	if allWater:
 		endGame()
+	
+	if tsunamiTimer < 0:
+		tsunamiTimer = tsunamiMaxTimer
+		spawnTsunami()
 		
 
 func endGame():

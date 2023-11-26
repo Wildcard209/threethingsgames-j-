@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://blus4kdgrrhwu"]
+
+[node name="bunbun" type="CharacterBody2D"]

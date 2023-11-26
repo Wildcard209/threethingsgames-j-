@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://rgfwprdt2rxh"]
+[gd_scene load_steps=4 format=3 uid="uid://rgfwprdt2rxh"]
 
 [ext_resource type="Script" path="res://Src/map.gd" id="1_kod1y"]
 [ext_resource type="PackedScene" uid="uid://cysduv851pitb" path="res://Src/UI/UI.tscn" id="2_2fnx0"]
+[ext_resource type="PackedScene" uid="uid://clk13g4nk4nh2" path="res://Src/Tsunami/Tsunami.tscn" id="3_rswru"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_kod1y")
@@ -9,3 +10,6 @@ script = ExtResource("1_kod1y")
 [node name="map" type="Node" parent="."]
 
 [node name="UI" parent="map" instance=ExtResource("2_2fnx0")]
+
+[node name="Tsunami" parent="." instance=ExtResource("3_rswru")]
+position = Vector2(306, 163)

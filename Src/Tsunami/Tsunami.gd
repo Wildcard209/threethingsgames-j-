@@ -1,11 +1,11 @@
 class_name tsunami extends CharacterBody2D
-
+var lifetime = 250
+var speed = 2000
 var damage = 5
-var lifetime = 30
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity.x = 10
-	velocity.y = 10
+	velocity.x = 80
+	velocity.y = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

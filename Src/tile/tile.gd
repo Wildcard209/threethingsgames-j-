@@ -18,10 +18,13 @@ var prodTime = productionTimeMax
 var windmillCost = 5
 var groundCost = 1
 
+
+
 func _ready():
 	var anim = $AnimatedSprite2D
 	Rect = $ColorRect
 	$Sprite2D2.play()
+	
 	hp = max_hp
 	buildingHP = buildingHPMax
 	anim.play()
@@ -44,7 +47,6 @@ func _on_area_2d_area_entered(area):
 		if area.owner as tsunami:
 			if buildState == eBuildState.windmill:
 				damageBuilding(area.owner.damage)
-				area.owner.queue_free()
 		else:
 			print("no")
 func damageBuilding(damage):
@@ -67,7 +69,7 @@ func _on_area_2d_mouse_exited():
 func _input(event):
 	if hovered:
 		if Input.is_action_just_pressed("test") && connectedToLand() && canBuild(groundCost,true) && !isGround():
-			hp = 500
+			hp = max_hp
 			buildState = eBuildState.none
 			Owner.wind -= groundCost
 			changeAnimState()
@@ -123,7 +125,10 @@ func changeAnimState():
 func getSurroundingTilesString():
 	var grid = [] + Owner.grid
 	var out = ""
-	out +="Grass_Edge"
+	if max_hp/hp > 2:
+		out += "Grass_Eroded_Edge"
+	else:
+		out +="Grass_Edge"
 	var e = clamp(x+1,0,Owner.GRID_HORIZ_SIZE-1)
 	var w = clamp(x-1,0,Owner.GRID_HORIZ_SIZE-1)
 	var s = clamp(y+1,0,Owner.GRID_VERT_SIZE-1)
@@ -160,6 +165,8 @@ func getSurroundingTilesString():
 		#grid[e][s].Rect.visible = true
 	if out == "Grass_Edge":
 		out = "Grass_Inside_1"
+	elif out == "Grass_Eroded_Edge":
+		out = "Grass_Eroded_1"
 		
 	return out
 		

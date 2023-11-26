@@ -44,6 +44,7 @@ frame_progress = 0.740449
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(3.04646e-07, 3.04646e-07)
 scale = Vector2(0.888889, 0.888889)
+collision_mask = 3
 script = SubResource("GDScript_gaocj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
