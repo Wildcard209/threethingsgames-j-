@@ -13,7 +13,7 @@ var UI
 
 var wind : int = 5
 
-var TIMER_MAX :int = 1
+var TIMER_MAX :int = 3
 var timer
 
 var MIN_TSUNAMI_TIMER = 25
@@ -41,7 +41,15 @@ func _ready():
 		for j in range(3,9):
 			grid[i][j].buildState = tile.eBuildState.none
 	
-	
+	var f = load("res://Src/bunbun/bunbun.tscn").instantiate()
+	f.position = grid[8][7].position
+	add_child(f)
+	f = load("res://Src/bunbun/bunbun.tscn").instantiate()
+	f.position = grid[10][5].position
+	add_child(f)
+	f = load("res://Src/bunbun/bunbun.tscn").instantiate()
+	f.position = grid[9][4].position
+	add_child(f)
 func spawnTsunami():
 	var x = load("res://Src/Tsunami/Tsunami.tscn").instantiate()
 	x.transform = Transform2D(0.0,Vector2(3,24),0,Vector2(-100,-100))
@@ -61,7 +69,7 @@ func _process(delta):
 				if x.buildState != tile.eBuildState.dead:
 					var water = findSurroundingWater(i,j)
 					if  water>0:
-						x.erode(water,delta)
+						x.erode(1,delta)
 	var allWater = true
 	for i in GRID_HORIZ_SIZE:
 			for j in GRID_VERT_SIZE:

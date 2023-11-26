@@ -44,7 +44,7 @@ frame_progress = 0.740449
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(3.04646e-07, 3.04646e-07)
 scale = Vector2(0.888889, 0.888889)
-collision_mask = 3
+collision_mask = 255
 script = SubResource("GDScript_gaocj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
@@ -70,5 +70,6 @@ offset_bottom = 32.0
 color = Color(0.34902, 0.34902, 0.34902, 0.45098)
 
 [connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="mouse_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_mouse_exited"]

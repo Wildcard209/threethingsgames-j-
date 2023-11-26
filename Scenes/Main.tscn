@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://rgfwprdt2rxh"]
+[gd_scene load_steps=3 format=3 uid="uid://rgfwprdt2rxh"]
 
 [ext_resource type="Script" path="res://Src/map.gd" id="1_kod1y"]
 [ext_resource type="PackedScene" uid="uid://cysduv851pitb" path="res://Src/UI/UI.tscn" id="2_2fnx0"]
-[ext_resource type="PackedScene" uid="uid://blus4kdgrrhwu" path="res://Src/bunbun/bunbun.tscn" id="3_acpvc"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_kod1y")
@@ -10,11 +9,3 @@ script = ExtResource("1_kod1y")
 [node name="map" type="Node" parent="."]
 
 [node name="UI" parent="map" instance=ExtResource("2_2fnx0")]
-
-[node name="bunbun" parent="." instance=ExtResource("3_acpvc")]
-z_index = 1
-position = Vector2(578, 227)
-
-[node name="bunbun2" parent="." instance=ExtResource("3_acpvc")]
-z_index = 1
-position = Vector2(509, 299)

@@ -12,13 +12,13 @@ var Rect
 
 var buildingHP:int = 5
 var buildingHPMax :int = 5
-var productionTimeMax = 0.3
+var productionTimeMax = 0.7
 var prodTime = productionTimeMax
 
 var windmillCost = 5
-var groundCost = 1
+var groundCost = 20
 
-
+var buns = []
 
 func _ready():
 	var anim = $AnimatedSprite2D
@@ -47,8 +47,12 @@ func _on_area_2d_area_entered(area):
 		if area.owner as tsunami:
 			if buildState == eBuildState.windmill:
 				damageBuilding(area.owner.damage)
-		else:
-			print("no")
+		elif area.owner as bunbun:
+			if buildState == eBuildState.dead:
+				area.owner.queue_free()
+			else:
+				buns.append(area.owner)
+			
 func damageBuilding(damage):
 	buildingHP -= damage
 	if buildingHP <=0:
@@ -105,6 +109,8 @@ func erode(water,delta):
 func checkDead():
 	if hp <=0:
 		buildState = eBuildState.dead
+		for i in buns:
+			i.queue_free()
 
 func changeAnimState():
 	match buildState:
@@ -175,3 +181,9 @@ enum eBuildState{
 	dead,
 	windmill
 }
+
+
+func _on_area_2d_area_exited(area):
+	for i in range(buns.size()):
+		if buns[i] == area.owner:
+			buns.remove_at(i)
