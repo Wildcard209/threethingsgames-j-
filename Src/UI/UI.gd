@@ -10,7 +10,7 @@ func _ready():
 	label = $Label
 	label2= $Label2
 	label3 = $Label3
-
+	$AudioStreamPlayer2D.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,3 +27,8 @@ func bundead():
 	label3.text = "THE BUNNES ARE DEAD
 YOU KILLED THE BUNNES
 THEY WILL COME FOR REVENGE"
+
+
+
+func _on_audio_stream_player_2d_finished():
+	$AudioStreamPlayer2D.play()

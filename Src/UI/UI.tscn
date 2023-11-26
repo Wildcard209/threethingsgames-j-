@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cysduv851pitb"]
+[gd_scene load_steps=4 format=3 uid="uid://cysduv851pitb"]
 
 [ext_resource type="Script" path="res://Src/UI/UI.gd" id="1_cacal"]
 [ext_resource type="Texture2D" uid="uid://c8xlexrathu8a" path="res://Assets/Sign.png" id="2_78uyj"]
+[ext_resource type="AudioStream" uid="uid://d3bpds5onl7mt" path="res://Src/Panga Panda.wav" id="3_s64rv"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -43,3 +44,9 @@ offset_top = 278.0
 offset_right = 763.0
 offset_bottom = 356.0
 scale = Vector2(4.05827, 5.22533)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s64rv")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
