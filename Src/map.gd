@@ -89,6 +89,8 @@ func _process(delta):
 	for i in get_children():
 		if i as bunbun:
 			buns +=1
+			if buns ==0:
+				UI.bundead
 	
 	if tsunamiTimer < 0:
 		tsunamiTimer = tsunamiMaxTimer

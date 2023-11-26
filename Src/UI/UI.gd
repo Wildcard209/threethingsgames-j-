@@ -16,5 +16,9 @@ func _process(delta):
 	label2.text = "BUNNIES: "+buns
 
 
-func _on_button_pressed():
-	get_tree().change_scene_to_file("res://Src/MainMenu.tscn")
+func _input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://Src/MainMenu.tscn")
+	
+func bundead():
+	$Label3.visible = true

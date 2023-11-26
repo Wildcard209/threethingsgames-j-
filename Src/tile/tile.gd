@@ -7,6 +7,7 @@ var hovered = false
 var Owner
 var x :int
 var y :int
+var grassno = str(randi_range(1,13))
 
 var Rect
 
@@ -179,7 +180,8 @@ func getSurroundingTilesString():
 		out=out + "_SE"
 		#grid[e][s].Rect.visible = true
 	if out == "Grass_Edge":
-		out = "Grass_Inside_1"
+		out = "Grass_Inside_"
+		out = out+grassno
 	elif out == "Grass_Eroded_Edge":
 		out = "Grass_Eroded_1"
 		
